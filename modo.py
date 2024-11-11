@@ -18,13 +18,13 @@ facil_select = gameimage.GameImage("Images\\peng\\facil_botao_select.png")
 medio_select = gameimage.GameImage("Images\\peng\\medio_botao_select.png")
 dificil_select = gameimage.GameImage("Images\\peng\\dificil_botao_select.png")
 
-facil.set_position(largura / 2 - facil.width / 2, 200)
-medio.set_position(largura / 2 - medio.width / 2, 300)
-dificil.set_position(largura / 2 - dificil.width / 2, 400)
+facil.set_position(largura / 2 - facil.width / 2, 150)
+medio.set_position(largura / 2 - medio.width / 2, 400)
+dificil.set_position(largura / 2 - dificil.width / 2, 650)
 
-facil_select.set_position(largura / 2 - facil_select.width / 2, 195)
-medio_select.set_position(largura / 2 - medio_select.width / 2, 295)
-dificil_select.set_position(largura / 2 - dificil_select.width / 2, 395)
+facil_select.set_position(largura / 2 - facil_select.width / 2, 145)
+medio_select.set_position(largura / 2 - medio_select.width / 2, 395)
+dificil_select.set_position(largura / 2 - dificil_select.width / 2, 645)
 
 teclado = janela.get_keyboard()
 rato = Mouse()
@@ -48,19 +48,19 @@ def dificuldade():
         medio.draw()
         dificil.draw()
         
-        if Mouse.is_over_area(rato, (largura / 2 - facil.width / 2, 200), (largura / 2 + facil.width / 2, facil.height + 200)):
+        if Mouse.is_over_area(rato, (largura / 2 - facil.width / 2, 150), (largura / 2 + facil.width / 2, facil.height + 150)):
             facil_select.draw()
             if Mouse.is_button_pressed(rato, 1):
                 dif = 1
                 jogo(1)
 
-        if Mouse.is_over_area(rato, (largura / 2 - medio.width / 2, 300), (largura / 2 + medio.width / 2, medio.height + 300)):
+        if Mouse.is_over_area(rato, (largura / 2 - medio.width / 2, 400), (largura / 2 + medio.width / 2, medio.height + 400)):
             medio_select.draw()
             if Mouse.is_button_pressed(rato, 1):
                 dif = 2
                 jogo(2)
 
-        if Mouse.is_over_area(rato, (largura / 2 - dificil.width / 2, 400), (largura / 2 + dificil.width / 2, dificil.height + 400)):
+        if Mouse.is_over_area(rato, (largura / 2 - dificil.width / 2, 650), (largura / 2 + dificil.width / 2, dificil.height + 650)):
             dificil_select.draw()
             if Mouse.is_button_pressed(rato, 1):
                 dif = 3
