@@ -114,8 +114,3 @@ def escolher_dificuldade():
                 break  # Retorna para o menu principal
 
             janela.update()  # Atualiza a janela
-
-
-# Função para mostrar o menu principal
-
-
