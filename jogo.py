@@ -3,6 +3,9 @@ from PPlay.keyboard import *
 from PPlay.sprite import *
 from constants import *
 from PPlay.gameobject import *
+from inimigo import desenha_matriz
+from inimigo import criar_matriz
+from inimigo import update_inimigo
 
 
 def posInicialTiro(player,tiros):
@@ -30,12 +33,28 @@ def jogar_game():
 
     tiro = Sprite("Images//tiro.png")
     tiros = []
+
+    inimigos = []
+    lmonstro = 3
+    colmonstro = 5
+    inimigos = criar_matriz(inimigos, lmonstro, colmonstro)
+    velx_inimigo = 50
+    vely_inimigo = 0.5
     
+    
+    fps = 0
+
 
     while True:
         
         bg.draw()
         nave.draw()
+
+        deltatime = janela.delta_time()
+        if (janela.time_elapsed() % 100 == 0) and (deltatime!=0):
+            fps = int(1 /deltatime)
+        janela.draw_text(str(fps),20,20,size=35, color=(255,255,255))
+
 
         if teclado.key_pressed("right") and nave.x + nave.width <= largura:
             nave.x += velocidade_player * janela.delta_time()
@@ -51,7 +70,8 @@ def jogar_game():
             tiros = posInicialTiro(nave, tiros)
         elif teclado.key_pressed("space") and tiros[len(tiros)-1].y < velocidade_tiro:
             tiros = posInicialTiro(nave, tiros)
-            
+
+
         if len(tiros) > 0:
             for i in tiros:
                 i.draw()
@@ -59,5 +79,9 @@ def jogar_game():
                     i.y -= velocidade_tiro * janela.delta_time()
                 else:
                     tiros.remove(i)
+
+        desenha_matriz(inimigos)
+        velx_inimigo = update_inimigo(inimigos, nave, janela, velx_inimigo, vely_inimigo)
+        
 
         janela.update()  # Atualiza a janela
